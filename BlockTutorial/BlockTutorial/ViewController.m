@@ -28,10 +28,6 @@
     manager = [HTTPBinManager sharedInstance];
     manager.delegate = self;
     [manager executeOperation];
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                       
-    });
 }
 
 #pragma mark - HTTPBinManagerDelegate

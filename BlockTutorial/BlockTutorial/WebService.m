@@ -55,60 +55,47 @@
     }
     
     //http://stackoverflow.com/questions/19099448/send-post-request-using-nsurlsession
-    
-    NSError *error;
-    
-    NSURLSessionConfiguration *configuration =
-    [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    NSURLSession *session =
-    [NSURLSession sessionWithConfiguration:configuration
-                                  delegate:nil
-                             delegateQueue:nil];
+    //http://stackoverflow.com/questions/6148900/append-data-to-a-post-nsurlrequest
     
     NSURL *url = [NSURL URLWithString:@"http://httpbin.org/post"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
-    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    [request setHTTPMethod:@"POST"];
-    
+    NSError *jsonError;
     NSData *postData =
-    [NSJSONSerialization dataWithJSONObject:@{@"custname": @"kkbox"}
+    [NSJSONSerialization dataWithJSONObject:@{@"custname": name}
                                     options:0
-                                      error:&error];
+                                      error:&jsonError];
     [request setHTTPBody:postData];
     
-    
     NSURLSessionDataTask *postDataTask =
-    [session dataTaskWithRequest:request
-               completionHandler:^(NSData *data,
-                                   NSURLResponse *response,
-                                   NSError *error) {
-                   
-                   dispatch_async(dispatch_get_main_queue(), ^{
-                       if (error) {
-                           callback(nil, error);
-                       }
-                       else {
-                           NSError *jsonError = nil;
-                           id json =
-                           [NSJSONSerialization JSONObjectWithData:data
-                                                           options:NSJSONReadingMutableContainers
-                                                             error:&jsonError];
-                           
-                           if ([json isKindOfClass:[NSDictionary class]]) {
-                               callback(json, error);
-                           }
-                           else {
-                               callback(nil, error);
-                           }
-                       }
-                   });
-    }];
+    [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                    completionHandler:^(NSData *data,
+                                                        NSURLResponse *response,
+                                                        NSError *error) {
+                                        
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            if (error) {
+                                                callback(nil, error);
+                                            }
+                                            else {
+                                                NSError *jsonError = nil;
+                                                id json =
+                                                [NSJSONSerialization JSONObjectWithData:data
+                                                                                options:NSJSONReadingMutableContainers
+                                                                                  error:&jsonError];
+                                                
+                                                if ([json isKindOfClass:[NSDictionary class]]) {
+                                                    callback(json, error);
+                                                }
+                                                else {
+                                                    callback(nil, error);
+                                                }
+                                            }
+                                        });
+                                    }];
     
     [postDataTask resume];
 }

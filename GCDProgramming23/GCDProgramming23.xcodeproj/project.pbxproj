@@ -12,9 +12,9 @@
 		F859BE2E1D2221FF00D94DCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F859BE2C1D2221FF00D94DCC /* Main.storyboard */; };
 		F859BE301D2221FF00D94DCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F859BE2F1D2221FF00D94DCC /* Assets.xcassets */; };
 		F859BE331D2221FF00D94DCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F859BE311D2221FF00D94DCC /* LaunchScreen.storyboard */; };
-		F859BE3E1D222B9C00D94DCC /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = F859BE3D1D222B9C00D94DCC /* WebService.m */; };
 		F859BE411D222D9A00D94DCC /* HTTPBinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BE401D222D9A00D94DCC /* HTTPBinManager.swift */; };
 		F859BE431D222DAF00D94DCC /* HTTPBinManagerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BE421D222DAF00D94DCC /* HTTPBinManagerOperation.swift */; };
+		F86BCD8B1D225B28001C964A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BCD8A1D225B28001C964A /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +25,9 @@
 		F859BE2F1D2221FF00D94DCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F859BE321D2221FF00D94DCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F859BE341D2221FF00D94DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F859BE3B1D222B9B00D94DCC /* GCDProgramming23-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GCDProgramming23-Bridging-Header.h"; sourceTree = "<group>"; };
-		F859BE3C1D222B9C00D94DCC /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
-		F859BE3D1D222B9C00D94DCC /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		F859BE401D222D9A00D94DCC /* HTTPBinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinManager.swift; sourceTree = "<group>"; };
 		F859BE421D222DAF00D94DCC /* HTTPBinManagerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinManagerOperation.swift; sourceTree = "<group>"; };
+		F86BCD8A1D225B28001C964A /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +75,7 @@
 		F859BE3A1D222B8C00D94DCC /* WebService */ = {
 			isa = PBXGroup;
 			children = (
-				F859BE3B1D222B9B00D94DCC /* GCDProgramming23-Bridging-Header.h */,
-				F859BE3C1D222B9C00D94DCC /* WebService.h */,
-				F859BE3D1D222B9C00D94DCC /* WebService.m */,
+				F86BCD8A1D225B28001C964A /* API.swift */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -164,10 +160,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F859BE3E1D222B9C00D94DCC /* WebService.m in Sources */,
 				F859BE2B1D2221FF00D94DCC /* ViewController.swift in Sources */,
 				F859BE291D2221FF00D94DCC /* AppDelegate.swift in Sources */,
 				F859BE431D222DAF00D94DCC /* HTTPBinManagerOperation.swift in Sources */,
+				F86BCD8B1D225B28001C964A /* API.swift in Sources */,
 				F859BE411D222D9A00D94DCC /* HTTPBinManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +282,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.a.GCDProgramming23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GCDProgramming23/GCDProgramming23-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -300,7 +296,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.a.GCDProgramming23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GCDProgramming23/GCDProgramming23-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

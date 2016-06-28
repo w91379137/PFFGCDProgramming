@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, HTTPBinManagerDelegate {
     
     //MARK: - Property
+    
+    @IBOutlet var imageView : UIImageView!
     let manager = HTTPBinManager()
     
     //MARK: - Init
