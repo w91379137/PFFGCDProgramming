@@ -15,6 +15,7 @@
 		F859BE411D222D9A00D94DCC /* HTTPBinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BE401D222D9A00D94DCC /* HTTPBinManager.swift */; };
 		F859BE431D222DAF00D94DCC /* HTTPBinManagerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BE421D222DAF00D94DCC /* HTTPBinManagerOperation.swift */; };
 		F86BCD8B1D225B28001C964A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BCD8A1D225B28001C964A /* API.swift */; };
+		F86BCD8D1D227E31001C964A /* HTTPBinWorkTogetherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86BCD8C1D227E31001C964A /* HTTPBinWorkTogetherOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F859BE401D222D9A00D94DCC /* HTTPBinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinManager.swift; sourceTree = "<group>"; };
 		F859BE421D222DAF00D94DCC /* HTTPBinManagerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinManagerOperation.swift; sourceTree = "<group>"; };
 		F86BCD8A1D225B28001C964A /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		F86BCD8C1D227E31001C964A /* HTTPBinWorkTogetherOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinWorkTogetherOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				F859BE401D222D9A00D94DCC /* HTTPBinManager.swift */,
 				F859BE421D222DAF00D94DCC /* HTTPBinManagerOperation.swift */,
+				F86BCD8C1D227E31001C964A /* HTTPBinWorkTogetherOperation.swift */,
 			);
 			name = subNSOperation;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F86BCD8D1D227E31001C964A /* HTTPBinWorkTogetherOperation.swift in Sources */,
 				F859BE2B1D2221FF00D94DCC /* ViewController.swift in Sources */,
 				F859BE291D2221FF00D94DCC /* AppDelegate.swift in Sources */,
 				F859BE431D222DAF00D94DCC /* HTTPBinManagerOperation.swift in Sources */,

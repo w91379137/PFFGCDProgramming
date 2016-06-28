@@ -31,7 +31,7 @@ class ViewController: UIViewController, HTTPBinManagerDelegate {
         }
         else {
             print("繼續進行 目前進度\(binManager.progress)")
-//            if binManager.progress > 0.4 && !binManager.cancelled {
+//            if binManager.progress > 0.2 && !binManager.cancelled {
 //                binManager.cancelOperation()
 //            }
         }

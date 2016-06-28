@@ -12,7 +12,7 @@ protocol HTTPBinManagerDelegate {
     func operationManagerNotice(binManager: HTTPBinManager!)
 }
 
-class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate {
+class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate ,HTTPBinWorkTogetherOperationDelegate{
 
     //MARK: - Property
     //Private
@@ -31,7 +31,7 @@ class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate {
         self.progress = 0
         self.cancelled = false
         
-        let op = HTTPBinManagerOperation()
+        let op = HTTPBinWorkTogetherOperation()
         op.delegate = self
         self.queue.addOperation(op)
     }
@@ -42,6 +42,15 @@ class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate {
     
     //MARK: - HTTPBinManagerOperationDelegate
     func operationNotice(operation: HTTPBinManagerOperation!) {
+        self.cancelled = operation.cancelled
+        self.progress = operation.progress()
+        self.error = operation.error
+        
+        self.delegate?.operationManagerNotice(self)
+    }
+    
+    //MARK: - HTTPBinWorkTogetherOperationDelegate
+    func operationWorkTogetherNotice(operation: HTTPBinWorkTogetherOperation!) {
         self.cancelled = operation.cancelled
         self.progress = operation.progress()
         self.error = operation.error
