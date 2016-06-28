@@ -12,11 +12,11 @@ protocol HTTPBinManagerOperationDelegate {
     func operationNotice(operation: HTTPBinManagerOperation!)
 }
 
-class HTTPBinManagerOperation: NSOperation {
+class HTTPBinManagerOperation: Operation {
     
     //MARK: - Property
     //Private
-    private let semaphore = dispatch_semaphore_create(0);
+    private let semaphore = DispatchSemaphore(value: 0);
     
     //Public
     var delegate : HTTPBinManagerOperationDelegate?
@@ -29,42 +29,37 @@ class HTTPBinManagerOperation: NSOperation {
     //MARK:
     override func main() {
         
-        WebService.fetchGetResponseWithCallback { (anyObj, err) in
-            
+        WebService.fetchGetResponse { (anyObj, err) in
             if err != nil {
                 self.error = err
                 self.cancel()
             }
             else {
-                self.getDict = anyObj as NSDictionary
+                self.getDict = anyObj! as NSDictionary
             }
-            
-            dispatch_semaphore_signal(self.semaphore)
+            self.semaphore.signal()
         }
-        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER)
+        self.semaphore.wait()
         
-        if self.cancelled { return }
-        self.delegate?.operationNotice(self)
+        if self.isCancelled { return }
+        self.delegate?.operationNotice(operation: self)
         
         WebService.postCustomerName("kkbox") { (anyObj, err) in
-            
             if err != nil {
                 self.error = err
                 self.cancel()
             }
             else {
-                self.postDict = anyObj as NSDictionary
+                self.postDict = anyObj! as NSDictionary
             }
-            
-            dispatch_semaphore_signal(self.semaphore)
+            self.semaphore.signal()
         }
-        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER)
+        self.semaphore.wait()
         
-        if self.cancelled { return }
-        self.delegate?.operationNotice(self)
+        if self.isCancelled { return }
+        self.delegate?.operationNotice(operation: self)
         
-        WebService.fetchImageWithCallback { (image, err) in
-            
+        WebService.fetchImage { (image, err) in
             if err != nil {
                 self.error = err
                 self.cancel()
@@ -72,19 +67,18 @@ class HTTPBinManagerOperation: NSOperation {
             else {
                 self.image = image
             }
-            
-            dispatch_semaphore_signal(self.semaphore)
+            self.semaphore.signal()
         }
-        dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER)
+        self.semaphore.wait()
         
-        if self.cancelled { return }
-        self.delegate?.operationNotice(self)
+        if self.isCancelled { return }
+        self.delegate?.operationNotice(operation: self)
     }
     
     override func cancel() {
         super.cancel()
-        dispatch_semaphore_signal(self.semaphore);
-        self.delegate?.operationNotice(self)
+        self.semaphore.signal();
+        self.delegate?.operationNotice(operation: self)
     }
     
     func progress() -> Float {
