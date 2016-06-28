@@ -29,13 +29,13 @@ class HTTPBinManagerOperation: Operation {
     //MARK:
     override func main() {
         
-        WebService.fetchGetResponse { (anyObj, err) in
-            if err != nil {
-                self.error = err
+        fetchGetResponseWithCallback { (dict, error) in
+            if error != nil {
+                self.error = error
                 self.cancel()
             }
             else {
-                self.getDict = anyObj! as NSDictionary
+                self.getDict = dict
             }
             self.semaphore.signal()
         }
@@ -44,13 +44,13 @@ class HTTPBinManagerOperation: Operation {
         if self.isCancelled { return }
         self.delegate?.operationNotice(operation: self)
         
-        WebService.postCustomerName("kkbox") { (anyObj, err) in
-            if err != nil {
-                self.error = err
+        postCustomerName(name: "test") { (dict, error) in
+            if error != nil {
+                self.error = error
                 self.cancel()
             }
             else {
-                self.postDict = anyObj! as NSDictionary
+                self.postDict = dict
             }
             self.semaphore.signal()
         }
@@ -59,9 +59,9 @@ class HTTPBinManagerOperation: Operation {
         if self.isCancelled { return }
         self.delegate?.operationNotice(operation: self)
         
-        WebService.fetchImage { (image, err) in
-            if err != nil {
-                self.error = err
+        fetchImageWithCallback { (image, error) in
+            if error != nil {
+                self.error = error
                 self.cancel()
             }
             else {

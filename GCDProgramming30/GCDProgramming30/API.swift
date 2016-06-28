@@ -10,7 +10,7 @@ import UIKit
 
 func fetchGetResponseWithCallback(completion: ((dict: [String : AnyObject]?, error: NSError?) -> ())) {
     
-    guard let url = NSURL(string: "http://httpbin.org/get") else {
+    guard let url = URL(string: "http://httpbin.org/get") else {
         let error =
             NSError(domain: "Invalid URL",
                     code: -1,
@@ -19,12 +19,8 @@ func fetchGetResponseWithCallback(completion: ((dict: [String : AnyObject]?, err
         return
     }
     
-    let request = NSURLRequest(URL: url)
-    
-    let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
-        
-        dispatch_async(dispatch_get_main_queue(), { 
-            
+    let task = URLSession.shared().dataTask(with: url) { (data, response, error) in
+        DispatchQueue.main.async(execute: { 
             if error != nil {
                 completion(dict: nil, error: error)
             }
@@ -34,7 +30,7 @@ func fetchGetResponseWithCallback(completion: ((dict: [String : AnyObject]?, err
                 var jsonError : NSError? = nil
                 
                 do {
-                    dict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [String : AnyObject]
+                    dict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String : AnyObject]
                 }
                 catch {
                     jsonError =
@@ -53,7 +49,7 @@ func fetchGetResponseWithCallback(completion: ((dict: [String : AnyObject]?, err
 
 func postCustomerName(name : String!, completion: ((dict: [String : AnyObject]?, error: NSError?) -> ())) {
     
-    guard let url = NSURL(string: "http://httpbin.org/post") else {
+    guard let url = URL(string: "http://httpbin.org/post") else {
         let error =
             NSError(domain: "Invalid URL",
                     code: -1,
@@ -62,13 +58,13 @@ func postCustomerName(name : String!, completion: ((dict: [String : AnyObject]?,
         return
     }
     
-    let request = NSMutableURLRequest(URL: url)
-    request.HTTPMethod = "POST"
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     
     do {
-        request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(["custname" : name], options: NSJSONWritingOptions.init(rawValue: 0))
+        request.httpBody = try JSONSerialization.data(withJSONObject: ["custname" : name], options: JSONSerialization.WritingOptions.init(rawValue: 0))
     }
     catch {
         let jsonError =
@@ -80,10 +76,8 @@ func postCustomerName(name : String!, completion: ((dict: [String : AnyObject]?,
         return
     }
     
-    let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            
+    let task = URLSession.shared().dataTask(with: request) { (data, response, error) in
+        DispatchQueue.main.async(execute: {
             if error != nil {
                 completion(dict: nil, error: error)
             }
@@ -92,18 +86,17 @@ func postCustomerName(name : String!, completion: ((dict: [String : AnyObject]?,
                 var jsonError : NSError? = nil
                 
                 do {
-                    dict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? [String : AnyObject]
+                    dict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String : AnyObject]
                 }
                 catch {
                     jsonError =
                         NSError(domain: "NSJSONSerialization.JSONObjectWithData",
-                            code: -1,
-                            userInfo: ["description" : "\(error)"])
+                                code: -1,
+                                userInfo: ["description" : "\(error)"])
                 }
                 
                 completion(dict: dict, error: jsonError)
             }
-            
         })
     }
     
@@ -112,7 +105,7 @@ func postCustomerName(name : String!, completion: ((dict: [String : AnyObject]?,
 
 func fetchImageWithCallback(completion: ((image: UIImage?, error: NSError?) -> ())) {
     
-    guard let url = NSURL(string: "http://httpbin.org/image/png") else {
+    guard let url = URL(string: "http://httpbin.org/image/png") else {
         let error =
             NSError(domain: "Invalid URL",
                     code: -1,
@@ -121,12 +114,8 @@ func fetchImageWithCallback(completion: ((image: UIImage?, error: NSError?) -> (
         return
     }
     
-    let request = NSURLRequest(URL: url)
-    
-    let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            
+    let task = URLSession.shared().dataTask(with: url) { (data, response, error) in
+        DispatchQueue.main.async(execute: {
             if error != nil {
                 completion(image: nil, error: error)
             }
@@ -138,8 +127,8 @@ func fetchImageWithCallback(completion: ((image: UIImage?, error: NSError?) -> (
                 else {
                     let error =
                         NSError(domain: "Invalid data",
-                            code: -1,
-                            userInfo: ["description" : "Invalid data"])
+                                code: -1,
+                                userInfo: ["description" : "Invalid data"])
                     
                     completion(image: nil, error: error)
                 }
