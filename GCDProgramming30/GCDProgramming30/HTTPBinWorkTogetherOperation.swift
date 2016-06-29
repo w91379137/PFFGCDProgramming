@@ -28,43 +28,46 @@ class HTTPBinWorkTogetherOperation: Operation {
         
         let workGroup = DispatchGroup()
         
-        DispatchQueue.global(attributes: .qosUserInteractive).async(group: workGroup) {
-            fetchGetResponseWithCallback { (dict, error) in
-                if error != nil {
-                    self.error = error
-                    self.cancel()
-                }
-                else {
-                    self.getDict = dict
-                }
-                self.delegate?.operationWorkTogetherNotice(operation: self)
+        workGroup.enter()
+        DispatchQueue.global(attributes: .qosDefault).async(group: workGroup) { 
+            
+        }
+        fetchGetResponseWithCallback { (dict, error) in
+            if error != nil {
+                self.error = error
+                self.cancel()
             }
+            else {
+                self.getDict = dict
+            }
+            self.delegate?.operationWorkTogetherNotice(operation: self)
+            workGroup.leave()
         }
         
-        DispatchQueue.global(attributes: .qosUserInteractive).async(group: workGroup) {
-            postCustomerName(name: "test") { (dict, error) in
-                if error != nil {
-                    self.error = error
-                    self.cancel()
-                }
-                else {
-                    self.postDict = dict
-                }
-                self.delegate?.operationWorkTogetherNotice(operation: self)
+        workGroup.enter()
+        postCustomerName(name: "test") { (dict, error) in
+            if error != nil {
+                self.error = error
+                self.cancel()
             }
+            else {
+                self.postDict = dict
+            }
+            self.delegate?.operationWorkTogetherNotice(operation: self)
+            workGroup.leave()
         }
         
-        DispatchQueue.global(attributes: .qosUserInteractive).async(group: workGroup) {
-            fetchImageWithCallback { (image, error) in
-                if error != nil {
-                    self.error = error
-                    self.cancel()
-                }
-                else {
-                    self.image = image
-                }
-                self.delegate?.operationWorkTogetherNotice(operation: self)
+        workGroup.enter()
+        fetchImageWithCallback { (image, error) in
+            if error != nil {
+                self.error = error
+                self.cancel()
             }
+            else {
+                self.image = image
+            }
+            self.delegate?.operationWorkTogetherNotice(operation: self)
+            workGroup.leave()
         }
         
         workGroup.notify(queue: .main) {

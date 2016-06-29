@@ -17,6 +17,7 @@
 		F85A59A61D20E65A00C39E21 /* BlockTutorialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A59A51D20E65A00C39E21 /* BlockTutorialTests.m */; };
 		F85A59B11D20FE2C00C39E21 /* HTTPBinManagerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A59B01D20FE2C00C39E21 /* HTTPBinManagerOperation.m */; };
 		F85A59B41D21037500C39E21 /* HTTPBinManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A59B31D21037500C39E21 /* HTTPBinManager.m */; };
+		F8F909FD1D23698C00372675 /* SingletonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F909FC1D23698C00372675 /* SingletonTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F85A59B01D20FE2C00C39E21 /* HTTPBinManagerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPBinManagerOperation.m; sourceTree = "<group>"; };
 		F85A59B21D21037500C39E21 /* HTTPBinManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPBinManager.h; sourceTree = "<group>"; };
 		F85A59B31D21037500C39E21 /* HTTPBinManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPBinManager.m; sourceTree = "<group>"; };
+		F8F909FC1D23698C00372675 /* SingletonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				F85A59A51D20E65A00C39E21 /* BlockTutorialTests.m */,
+				F8F909FC1D23698C00372675 /* SingletonTest.m */,
 				F85A59A71D20E65A00C39E21 /* Info.plist */,
 			);
 			path = BlockTutorialTests;
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F85A59A61D20E65A00C39E21 /* BlockTutorialTests.m in Sources */,
+				F8F909FD1D23698C00372675 /* SingletonTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +440,7 @@
 				F85A599B1D20DBF200C39E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F85A59AA1D20E65A00C39E21 /* Build configuration list for PBXNativeTarget "BlockTutorialTests" */ = {
 			isa = XCConfigurationList;
@@ -444,6 +449,7 @@
 				F85A59AC1D20E65A00C39E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

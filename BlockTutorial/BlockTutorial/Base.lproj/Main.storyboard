@@ -25,14 +25,23 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HKy-LK-MgW">
                                 <rect key="frame" x="142" y="275" width="37" height="37"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vu6-2l-OHb">
+                                <rect key="frame" x="143" y="524" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0EQ-W3-vaN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HKy-LK-MgW" firstAttribute="centerX" secondItem="NGV-eP-Q28" secondAttribute="centerX" id="6h6-0o-3e9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NGV-eP-Q28" secondAttribute="trailing" id="EBe-xN-jU1"/>
                             <constraint firstItem="NGV-eP-Q28" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="G2m-5O-Nzw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vu6-2l-OHb" secondAttribute="bottom" constant="14" id="Ndj-3N-UDe"/>
                             <constraint firstItem="HKy-LK-MgW" firstAttribute="centerY" secondItem="NGV-eP-Q28" secondAttribute="centerY" id="XpD-St-daa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NGV-eP-Q28" secondAttribute="bottom" id="dqF-eR-OoM"/>
+                            <constraint firstItem="Vu6-2l-OHb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ikV-Kg-WlY"/>
                             <constraint firstItem="NGV-eP-Q28" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pDm-71-Qga"/>
                         </constraints>
                     </view>

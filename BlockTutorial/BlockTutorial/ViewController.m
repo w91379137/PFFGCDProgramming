@@ -24,7 +24,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+}
+
+#pragma mark - IBAction
+- (IBAction)startAction:(id)sender
+{
     manager = [HTTPBinManager sharedInstance];
     manager.delegate = self;
     [manager executeOperation];
