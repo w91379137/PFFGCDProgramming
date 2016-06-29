@@ -9,7 +9,7 @@
 #import "HTTPBinManager.h"
 #import "HTTPBinManagerOperation.h"
 
-#define testMode 0
+#define testMode 1
 
 @interface HTTPBinManager()
 <HTTPBinManagerOperationDelegate>

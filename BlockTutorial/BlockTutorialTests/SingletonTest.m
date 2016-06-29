@@ -11,7 +11,6 @@
 
 @interface SingletonTest : XCTestCase
 {
-    BOOL finished;
     int testTimes;
 }
 
@@ -54,20 +53,12 @@
 }
 
 - (void)testTwoThread {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"threadTest"];
-    
-    dispatch_group_t totalGroup = dispatch_group_create();
+    XCTestExpectation *expectation = [self expectationWithDescription:@"testTwoThread"];
     
     testTimes = 0;
-    
-    dispatch_group_enter(totalGroup);
     [self manyTest:^{
-        dispatch_group_leave(totalGroup);
-    }];
-    
-    dispatch_group_notify(totalGroup, dispatch_get_main_queue(), ^{
         [expectation fulfill];
-    });
+    }];
     
     [self waitForExpectationsWithTimeout:20000 handler:^(NSError *error) {
         if (error) NSLog(@"Timeout Error: %@", error);
@@ -92,17 +83,17 @@
 - (void)onceTest:(dispatch_block_t)complete
 {
     dispatch_group_t group = dispatch_group_create();
-    HTTPBinManager.sharedInstance = nil; //正常
-    //_instance = nil; //並無法 正確設定成nil
+    //HTTPBinManager.sharedInstance = nil; //正常
+    _instance = nil; //並無法 正確設定成nil
     
-    __block id s1 = nil;
+    __block __unsafe_unretained  id s1 = nil;
     dispatch_group_enter(group);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         s1 = HTTPBinManager.sharedInstance;
         dispatch_group_leave(group);
     });
     
-    __block id s2 = nil;
+    __block __unsafe_unretained  id s2 = nil;
     dispatch_group_enter(group);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         s2 = HTTPBinManager.sharedInstance;

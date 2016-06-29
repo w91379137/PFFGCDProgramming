@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F81B6A4E1D23A2F9009709F8 /* SingletonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B6A4D1D23A2F9009709F8 /* SingletonTest.swift */; };
+		F81B6A4F1D23A555009709F8 /* HTTPBinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89BB0F31D22473F0028E97C /* HTTPBinManager.swift */; };
+		F81B6A501D23A557009709F8 /* HTTPBinManagerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89BB0F41D22473F0028E97C /* HTTPBinManagerOperation.swift */; };
+		F81B6A511D23A558009709F8 /* HTTPBinWorkTogetherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BDE7DE1D22822900FA3DBC /* HTTPBinWorkTogetherOperation.swift */; };
+		F824A5C31D239B0000ED0016 /* GCDProgramming30Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824A5C21D239B0000ED0016 /* GCDProgramming30Tests.swift */; };
+		F824A5CB1D239B1300ED0016 /* APITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824A5CA1D239B1300ED0016 /* APITest.swift */; };
+		F824A5CC1D239BDF00ED0016 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88E7F491D227665000112C1 /* API.swift */; };
 		F88E7F4A1D227665000112C1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88E7F491D227665000112C1 /* API.swift */; };
 		F89BB0DC1D2246080028E97C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89BB0DB1D2246080028E97C /* AppDelegate.swift */; };
 		F89BB0DE1D2246080028E97C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89BB0DD1D2246080028E97C /* ViewController.swift */; };
@@ -18,7 +25,22 @@
 		F8BDE7DF1D22822900FA3DBC /* HTTPBinWorkTogetherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BDE7DE1D22822900FA3DBC /* HTTPBinWorkTogetherOperation.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F824A5C51D239B0000ED0016 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F89BB0D01D2246080028E97C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F89BB0D71D2246080028E97C;
+			remoteInfo = GCDProgramming30;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		F81B6A4D1D23A2F9009709F8 /* SingletonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonTest.swift; sourceTree = "<group>"; };
+		F824A5C01D239B0000ED0016 /* GCDProgramming30Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCDProgramming30Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F824A5C21D239B0000ED0016 /* GCDProgramming30Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDProgramming30Tests.swift; sourceTree = "<group>"; };
+		F824A5C41D239B0000ED0016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F824A5CA1D239B1300ED0016 /* APITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITest.swift; sourceTree = "<group>"; };
 		F88E7F491D227665000112C1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F89BB0D81D2246080028E97C /* GCDProgramming30.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCDProgramming30.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89BB0DB1D2246080028E97C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +55,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F824A5BD1D239B0000ED0016 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F89BB0D51D2246080028E97C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,10 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F824A5C11D239B0000ED0016 /* GCDProgramming30Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F824A5C21D239B0000ED0016 /* GCDProgramming30Tests.swift */,
+				F824A5CA1D239B1300ED0016 /* APITest.swift */,
+				F81B6A4D1D23A2F9009709F8 /* SingletonTest.swift */,
+				F824A5C41D239B0000ED0016 /* Info.plist */,
+			);
+			path = GCDProgramming30Tests;
+			sourceTree = "<group>";
+		};
 		F89BB0CF1D2246080028E97C = {
 			isa = PBXGroup;
 			children = (
 				F89BB0DA1D2246080028E97C /* GCDProgramming30 */,
+				F824A5C11D239B0000ED0016 /* GCDProgramming30Tests */,
 				F89BB0D91D2246080028E97C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				F89BB0D81D2246080028E97C /* GCDProgramming30.app */,
+				F824A5C01D239B0000ED0016 /* GCDProgramming30Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +137,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F824A5BF1D239B0000ED0016 /* GCDProgramming30Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F824A5C71D239B0100ED0016 /* Build configuration list for PBXNativeTarget "GCDProgramming30Tests" */;
+			buildPhases = (
+				F824A5BC1D239B0000ED0016 /* Sources */,
+				F824A5BD1D239B0000ED0016 /* Frameworks */,
+				F824A5BE1D239B0000ED0016 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F824A5C61D239B0000ED0016 /* PBXTargetDependency */,
+			);
+			name = GCDProgramming30Tests;
+			productName = GCDProgramming30Tests;
+			productReference = F824A5C01D239B0000ED0016 /* GCDProgramming30Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F89BB0D71D2246080028E97C /* GCDProgramming30 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F89BB0EA1D2246080028E97C /* Build configuration list for PBXNativeTarget "GCDProgramming30" */;
@@ -122,6 +182,13 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = w91379137;
 				TargetAttributes = {
+					F824A5BF1D239B0000ED0016 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7ZCDHZ7BQ8;
+						DevelopmentTeamName = "永璋 林 (Personal Team)";
+						ProvisioningStyle = Automatic;
+						TestTargetID = F89BB0D71D2246080028E97C;
+					};
 					F89BB0D71D2246080028E97C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7ZCDHZ7BQ8;
@@ -145,11 +212,19 @@
 			projectRoot = "";
 			targets = (
 				F89BB0D71D2246080028E97C /* GCDProgramming30 */,
+				F824A5BF1D239B0000ED0016 /* GCDProgramming30Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F824A5BE1D239B0000ED0016 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F89BB0D61D2246080028E97C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +238,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F824A5BC1D239B0000ED0016 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F824A5CB1D239B1300ED0016 /* APITest.swift in Sources */,
+				F81B6A4E1D23A2F9009709F8 /* SingletonTest.swift in Sources */,
+				F81B6A4F1D23A555009709F8 /* HTTPBinManager.swift in Sources */,
+				F824A5CC1D239BDF00ED0016 /* API.swift in Sources */,
+				F824A5C31D239B0000ED0016 /* GCDProgramming30Tests.swift in Sources */,
+				F81B6A501D23A557009709F8 /* HTTPBinManagerOperation.swift in Sources */,
+				F81B6A511D23A558009709F8 /* HTTPBinWorkTogetherOperation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F89BB0D41D2246080028E97C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -177,6 +266,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F824A5C61D239B0000ED0016 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F89BB0D71D2246080028E97C /* GCDProgramming30 */;
+			targetProxy = F824A5C51D239B0000ED0016 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F89BB0DF1D2246080028E97C /* Main.storyboard */ = {
@@ -198,6 +295,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F824A5C81D239B0100ED0016 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GCDProgramming30Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.a.GCDProgramming30Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCDProgramming30.app/GCDProgramming30";
+			};
+			name = Debug;
+		};
+		F824A5C91D239B0100ED0016 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GCDProgramming30Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.a.GCDProgramming30Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCDProgramming30.app/GCDProgramming30";
+			};
+			name = Release;
+		};
 		F89BB0E81D2246080028E97C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -317,6 +440,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F824A5C71D239B0100ED0016 /* Build configuration list for PBXNativeTarget "GCDProgramming30Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F824A5C81D239B0100ED0016 /* Debug */,
+				F824A5C91D239B0100ED0016 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F89BB0D31D2246080028E97C /* Build configuration list for PBXProject "GCDProgramming30" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

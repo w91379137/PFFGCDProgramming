@@ -9,10 +9,17 @@
 import UIKit
 
 protocol HTTPBinManagerOperationDelegate {
-    func operationNotice(operation: HTTPBinManagerOperation!)
+    func operationNotice<T : HTTPBinManagerOperationType>(operation: T!)
 }
 
-class HTTPBinManagerOperation: Operation {
+protocol HTTPBinManagerOperationType {
+    
+    var isCancelled: Bool { get }
+    func progress() -> Float
+    var error : NSError? { get }
+}
+
+class HTTPBinManagerOperation: Operation,HTTPBinManagerOperationType {
     
     //MARK: - Property
     //Private

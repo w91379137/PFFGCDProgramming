@@ -12,7 +12,7 @@ protocol HTTPBinManagerDelegate {
     func operationManagerNotice(binManager: HTTPBinManager!)
 }
 
-class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate, HTTPBinWorkTogetherOperationDelegate {
+class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate {
 
     //MARK: - Property
     //Private
@@ -24,6 +24,9 @@ class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate, HTTPBinWorkToge
     var error : NSError? = nil
     var progress = Float(0)
     var cancelled = true
+    
+    //MARK: - Init
+    static let sharedInstance = HTTPBinManager()
     
     //MARK:
     func executeOperation() {
@@ -41,16 +44,7 @@ class HTTPBinManager: NSObject, HTTPBinManagerOperationDelegate, HTTPBinWorkToge
     }
     
     //MARK: - HTTPBinManagerOperationDelegate
-    func operationNotice(operation: HTTPBinManagerOperation!) {
-        self.cancelled = operation.isCancelled
-        self.progress = operation.progress()
-        self.error = operation.error
-        
-        self.delegate?.operationManagerNotice(binManager: self)
-    }
-    
-    //MARK: - HTTPBinWorkTogetherOperationDelegate
-    func operationWorkTogetherNotice(operation: HTTPBinWorkTogetherOperation!) {
+    func operationNotice<T : HTTPBinManagerOperationType>(operation: T!) {
         self.cancelled = operation.isCancelled
         self.progress = operation.progress()
         self.error = operation.error

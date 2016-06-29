@@ -45,10 +45,10 @@
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"testGet"];
     [WebService fetchGetResponseWithCallback:^(NSDictionary *dict, NSError *err) {
-        [expectation fulfill];
-        
         XCTAssertNotNil(dict, "dict should not be nil");
         XCTAssertNil(err, "err should be nil");
+        
+        [expectation fulfill];
     }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
@@ -61,10 +61,10 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"testPost"];
     [WebService postCustomerName:@"test"
                         callback:^(NSDictionary *dict, NSError *err) {
-                            [expectation fulfill];
-                            
                             XCTAssertNotNil(dict, "dict should not be nil");
                             XCTAssertNil(err, "err should be nil");
+                            
+                            [expectation fulfill];
                         }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
@@ -76,10 +76,10 @@
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"testImage"];
     [WebService fetchImageWithCallback:^(UIImage *image, NSError *err) {
-        [expectation fulfill];
-        
         XCTAssertNotNil(image, "image should not be nil");
         XCTAssertNil(err, "err should be nil");
+        
+        [expectation fulfill];
     }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {

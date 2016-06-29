@@ -11,12 +11,15 @@ import UIKit
 class ViewController: UIViewController, HTTPBinManagerDelegate {
     
     //MARK: - Property
-    let manager = HTTPBinManager()
+    let manager = HTTPBinManager.sharedInstance
     
     //MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    //MARK: - IBAction
+    @IBAction func startAction(sender : AnyObject) {
         manager.delegate = self
         manager.executeOperation()
     }

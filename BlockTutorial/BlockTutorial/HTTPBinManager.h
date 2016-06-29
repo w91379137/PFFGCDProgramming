@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class HTTPBinManager;
+
 static id _instance;
 static dispatch_once_t onceToken;
 
-@class HTTPBinManager;
 @protocol HTTPBinManagerDelegate <NSObject>
 
 - (void)operationManagerNotice:(HTTPBinManager *)binManager;

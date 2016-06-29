@@ -8,15 +8,11 @@
 
 import UIKit
 
-protocol HTTPBinWorkTogetherOperationDelegate {
-    func operationWorkTogetherNotice(operation: HTTPBinWorkTogetherOperation!)
-}
-
-class HTTPBinWorkTogetherOperation: Operation {
+class HTTPBinWorkTogetherOperation: Operation, HTTPBinManagerOperationType {
 
     //MARK: - Property
     //Public
-    var delegate : HTTPBinWorkTogetherOperationDelegate?
+    var delegate : HTTPBinManagerOperationDelegate?
     
     var error : NSError? = nil
     var image : UIImage? = nil
@@ -40,7 +36,7 @@ class HTTPBinWorkTogetherOperation: Operation {
             else {
                 self.getDict = dict
             }
-            self.delegate?.operationWorkTogetherNotice(operation: self)
+            self.delegate?.operationNotice(operation: self)
             workGroup.leave()
         }
         
@@ -53,7 +49,7 @@ class HTTPBinWorkTogetherOperation: Operation {
             else {
                 self.postDict = dict
             }
-            self.delegate?.operationWorkTogetherNotice(operation: self)
+            self.delegate?.operationNotice(operation: self)
             workGroup.leave()
         }
         
@@ -66,18 +62,18 @@ class HTTPBinWorkTogetherOperation: Operation {
             else {
                 self.image = image
             }
-            self.delegate?.operationWorkTogetherNotice(operation: self)
+            self.delegate?.operationNotice(operation: self)
             workGroup.leave()
         }
         
         workGroup.notify(queue: .main) {
-            self.delegate?.operationWorkTogetherNotice(operation: self)
+            self.delegate?.operationNotice(operation: self)
         }
     }
     
     override func cancel() {
         super.cancel()
-        self.delegate?.operationWorkTogetherNotice(operation: self)
+        self.delegate?.operationNotice(operation: self)
     }
     
     func progress() -> Float {
