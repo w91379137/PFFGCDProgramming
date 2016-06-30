@@ -14,10 +14,10 @@
 		F85A59921D20DBF200C39E21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F85A59911D20DBF200C39E21 /* Assets.xcassets */; };
 		F85A59951D20DBF200C39E21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85A59931D20DBF200C39E21 /* LaunchScreen.storyboard */; };
 		F85A599E1D20DF4700C39E21 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A599D1D20DF4700C39E21 /* WebService.m */; };
-		F85A59A61D20E65A00C39E21 /* BlockTutorialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A59A51D20E65A00C39E21 /* BlockTutorialTests.m */; };
+		F85A59A61D20E65A00C39E21 /* WebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A59A51D20E65A00C39E21 /* WebServiceTests.m */; };
 		F85A59B11D20FE2C00C39E21 /* HTTPBinManagerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A59B01D20FE2C00C39E21 /* HTTPBinManagerOperation.m */; };
 		F85A59B41D21037500C39E21 /* HTTPBinManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F85A59B31D21037500C39E21 /* HTTPBinManager.m */; };
-		F8F909FD1D23698C00372675 /* SingletonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F909FC1D23698C00372675 /* SingletonTest.m */; };
+		F8E79ED91D24CC0A00607D27 /* HTTPBinManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E79ED81D24CC0A00607D27 /* HTTPBinManagerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,13 +44,13 @@
 		F85A599C1D20DF4700C39E21 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		F85A599D1D20DF4700C39E21 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		F85A59A31D20E65A00C39E21 /* BlockTutorialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlockTutorialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F85A59A51D20E65A00C39E21 /* BlockTutorialTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockTutorialTests.m; sourceTree = "<group>"; };
+		F85A59A51D20E65A00C39E21 /* WebServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebServiceTests.m; sourceTree = "<group>"; };
 		F85A59A71D20E65A00C39E21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F85A59AF1D20FE2C00C39E21 /* HTTPBinManagerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPBinManagerOperation.h; sourceTree = "<group>"; };
 		F85A59B01D20FE2C00C39E21 /* HTTPBinManagerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPBinManagerOperation.m; sourceTree = "<group>"; };
 		F85A59B21D21037500C39E21 /* HTTPBinManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPBinManager.h; sourceTree = "<group>"; };
 		F85A59B31D21037500C39E21 /* HTTPBinManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPBinManager.m; sourceTree = "<group>"; };
-		F8F909FC1D23698C00372675 /* SingletonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonTest.m; sourceTree = "<group>"; };
+		F8E79ED81D24CC0A00607D27 /* HTTPBinManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPBinManagerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +118,8 @@
 		F85A59A41D20E65A00C39E21 /* BlockTutorialTests */ = {
 			isa = PBXGroup;
 			children = (
-				F85A59A51D20E65A00C39E21 /* BlockTutorialTests.m */,
-				F8F909FC1D23698C00372675 /* SingletonTest.m */,
+				F85A59A51D20E65A00C39E21 /* WebServiceTests.m */,
+				F8E79ED81D24CC0A00607D27 /* HTTPBinManagerTests.m */,
 				F85A59A71D20E65A00C39E21 /* Info.plist */,
 			);
 			path = BlockTutorialTests;
@@ -258,8 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F85A59A61D20E65A00C39E21 /* BlockTutorialTests.m in Sources */,
-				F8F909FD1D23698C00372675 /* SingletonTest.m in Sources */,
+				F85A59A61D20E65A00C39E21 /* WebServiceTests.m in Sources */,
+				F8E79ED91D24CC0A00607D27 /* HTTPBinManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

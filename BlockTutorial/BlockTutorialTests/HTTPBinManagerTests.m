@@ -1,23 +1,25 @@
 //
-//  SingletonTest.m
+//  HTTPBinManagerTests.m
 //  BlockTutorial
 //
-//  Created by w91379137 on 2016/6/29.
+//  Created by w91379137 on 2016/6/30.
 //  Copyright © 2016年 w91379137. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import "HTTPBinManager.h"
 
-@interface SingletonTest : XCTestCase
+@interface HTTPBinManagerTests : XCTestCase
 
 @end
 
-@implementation SingletonTest
-//http://iosunittesting.com/testing-singletons/
+@implementation HTTPBinManagerTests
 
-- (void)testDifferentThread
+- (void)testSingleton
 {
+    //https://zonble.gitbooks.io/kkbox-ios-dev/content/threading/practice.html
+    //寫一個叫做 HTTPBinManager 的 singleton 物件。
+    
     XCTestExpectation *expectation = [self expectationWithDescription:@"testDifferentThread"];
     
     dispatch_group_t group = dispatch_group_create();
