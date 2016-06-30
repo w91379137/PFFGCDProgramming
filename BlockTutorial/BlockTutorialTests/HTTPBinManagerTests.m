@@ -90,7 +90,7 @@
         if (binManager.isCancelled ||
             binManager.progress == 1) {
             
-            XCTAssertTrue(binManager.isCancelled == (binManager.error != nil));
+            XCTAssertTrue(binManager.isCancelled);
             NSLog(@"stop progress : %f",binManager.progress);
             [expectation fulfill];
             weakSelf.delegateBlock = nil;
@@ -122,7 +122,7 @@
         if (binManager.isCancelled ||
             binManager.progress == 1) {
             
-            XCTAssertTrue(binManager.isCancelled == (binManager.error != nil));
+            XCTAssertFalse(binManager.isCancelled);
             NSLog(@"stop progress : %f",binManager.progress);
             [expectation fulfill];
             weakSelf.delegateBlock = nil;

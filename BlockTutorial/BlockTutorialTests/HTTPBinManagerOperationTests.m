@@ -37,7 +37,7 @@
         if (operation.isCancelled ||
             operation.progress == 1) {
             
-            XCTAssertTrue(operation.isCancelled == (operation.error != nil));
+            XCTAssertTrue(operation.isCancelled);
             NSLog(@"stop progress : %f",operation.progress);
             [expectation fulfill];
             weakSelf.delegateBlock = nil;
@@ -68,7 +68,7 @@
         if (operation.isCancelled ||
             operation.progress == 1) {
             
-            XCTAssertTrue(operation.isCancelled == (operation.error != nil));
+            XCTAssertTrue(operation.isCancelled);
             NSLog(@"stop progress : %f",operation.progress);
             [expectation fulfill];
             weakSelf.delegateBlock = nil;
@@ -100,7 +100,7 @@
         if (operation.isCancelled ||
             operation.progress == 1) {
             
-            XCTAssertTrue(operation.isCancelled == (operation.error != nil));
+            XCTAssertTrue(operation.isCancelled);
             NSLog(@"stop progress : %f",operation.progress);
             [expectation fulfill];
             weakSelf.delegateBlock = nil;

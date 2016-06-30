@@ -10,13 +10,6 @@
 #import "WebService.h"
 #import "PDSSetting.h"
 
-typedef NS_ENUM(NSUInteger, TaskState) {
-    TaskStateGet,
-    TaskStatePost,
-    TaskStateImage,
-    TaskStateFinish
-};
-
 @interface HTTPBinManagerOperation()
 
 @end
@@ -28,33 +21,20 @@ typedef NS_ENUM(NSUInteger, TaskState) {
 {
     @autoreleasepool {
         self.error = nil;
-        [self loopAllTask:TaskStateGet];
+        [self loopAllTask];
     }
 }
 
 #pragma mark - Task
-- (void)loopAllTask:(TaskState)state
+- (void)loopAllTask
 {
+    if (self.isCancelled || self.error) return;
+    
     weakSelfMake(weakSelf);
+    if (!self.getDict) [self taskGet:^{ [weakSelf loopAllTask]; }];
+    else if (!self.postDict) [self taskPost:^{ [weakSelf loopAllTask]; }];
+    else if (!self.image) [self taskImage:^{ [weakSelf loopAllTask]; }];
     
-    switch (state) {
-        case TaskStateGet: {
-            [self taskGet:^{ [weakSelf loopAllTask:TaskStatePost]; }];
-        }   break;
-            
-        case TaskStatePost: {
-            [self taskPost:^{ [weakSelf loopAllTask:TaskStateImage]; }];
-        }   break;
-            
-        case TaskStateImage: {
-            [self taskImage:^{ [weakSelf loopAllTask:TaskStateFinish]; }];
-        }   break;
-            
-        default:
-            break;
-    }
-    
-    if (self.isCancelled) return;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate operationNotice:self];
     });
@@ -111,12 +91,7 @@ typedef NS_ENUM(NSUInteger, TaskState) {
 #pragma mark -
 - (void)cancel
 {
-    [super cancel];
-    self.error =
-    [NSError errorWithDomain:@"call cancel method"
-                        code:-1
-                    userInfo:@{@"Description":@"call cancel method"}];
-    
+    [super cancel]; //cancel self no error
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.delegate operationNotice:self];
     });
