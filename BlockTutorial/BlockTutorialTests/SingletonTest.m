@@ -56,7 +56,7 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"testTwoThread"];
     
     testTimes = 0;
-    [self manyTest:^{
+    [self manyTimesTest:^{
         [expectation fulfill];
     }];
     
@@ -65,13 +65,13 @@
     }];
 }
 
-- (void)manyTest:(dispatch_block_t)complete
+- (void)manyTimesTest:(dispatch_block_t)complete
 {
-    [self onceTest:^{
+    [self onceTimeTest:^{
         if (testTimes < 100) {
             testTimes ++;
             NSLog(@"第 %d 次測試",testTimes);
-            [self manyTest:complete];
+            [self manyTimesTest:complete];
         }
         else {
             NSLog(@"完成");
@@ -80,25 +80,20 @@
     }];
 }
 
-- (void)onceTest:(dispatch_block_t)complete
+- (void)onceTimeTest:(dispatch_block_t)complete
 {
     dispatch_group_t group = dispatch_group_create();
-    //HTTPBinManager.sharedInstance = nil; //正常
-    _instance = nil; //並無法 正確設定成nil
     
-    __block __unsafe_unretained  id s1 = nil;
+    [HTTPBinManager resetSharedInstance];
+    
+    __block __unsafe_unretained id s1 = nil;
     dispatch_group_enter(group);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         s1 = HTTPBinManager.sharedInstance;
         dispatch_group_leave(group);
     });
     
-    __block __unsafe_unretained  id s2 = nil;
-    dispatch_group_enter(group);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        s2 = HTTPBinManager.sharedInstance;
-        dispatch_group_leave(group);
-    });
+    __block __unsafe_unretained id s2 = HTTPBinManager.sharedInstance;
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         XCTAssertEqual(s1, s2);

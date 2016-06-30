@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @class HTTPBinManager;
-
-static id _instance;
-static dispatch_once_t onceToken;
-
 @protocol HTTPBinManagerDelegate <NSObject>
 
 - (void)operationManagerNotice:(HTTPBinManager *)binManager;
@@ -22,7 +18,7 @@ static dispatch_once_t onceToken;
 @interface HTTPBinManager : NSObject
 
 + (instancetype)sharedInstance;
-+ (void)setSharedInstance:(HTTPBinManager *)instance;
++ (void)resetSharedInstance;
 
 @property(nonatomic, weak) id<HTTPBinManagerDelegate>delegate;
 

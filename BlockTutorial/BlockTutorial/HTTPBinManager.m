@@ -9,7 +9,8 @@
 #import "HTTPBinManager.h"
 #import "HTTPBinManagerOperation.h"
 
-#define testMode 1
+static id _instance;
+static dispatch_once_t onceToken;
 
 @interface HTTPBinManager()
 <HTTPBinManagerOperationDelegate>
@@ -23,25 +24,18 @@
 #pragma mark - Init
 + (instancetype)sharedInstance
 {
-    NSLog(@"%s instance: %@",__func__,_instance);
+    dispatch_once(&onceToken, ^{
+        _instance = [[self alloc] init];
+    });
     
-    if (!testMode) {
-        dispatch_once(&onceToken, ^{
-            _instance = [[self alloc] init];
-        });
-    }
-    else {
-        if (!_instance) {
-            _instance = [[self alloc] init];
-        }
-    }
     return _instance;
 }
 
-+ (void)setSharedInstance:(HTTPBinManager *)instance
++ (void)resetSharedInstance
 {
-    onceToken = 0; // resets the once_token so dispatch_once will run again
-    _instance = instance;
+    //for debug & test
+    _instance = nil;
+    onceToken = 0;
 }
 
 - (instancetype)init
@@ -50,7 +44,6 @@
     if (self) {
         self.queue = [[NSOperationQueue alloc] init];
         self.queue.maxConcurrentOperationCount = 1;
-        if(testMode) sleep(1);//delay for test
     }
     return self;
 }
