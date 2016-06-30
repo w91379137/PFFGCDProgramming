@@ -9,9 +9,6 @@
 #import "HTTPBinManager.h"
 #import "HTTPBinManagerOperation.h"
 
-static id _instance;
-static dispatch_once_t onceToken;
-
 @interface HTTPBinManager()
 <HTTPBinManagerOperationDelegate>
 
@@ -24,18 +21,13 @@ static dispatch_once_t onceToken;
 #pragma mark - Init
 + (instancetype)sharedInstance
 {
+    static id _instance;
+    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[self alloc] init];
     });
     
     return _instance;
-}
-
-+ (void)resetSharedInstance
-{
-    //for debug & test
-    _instance = nil;
-    onceToken = 0;
 }
 
 - (instancetype)init
