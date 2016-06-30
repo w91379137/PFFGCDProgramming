@@ -13,6 +13,7 @@
 <HTTPBinManagerDelegate>
 {
     IBOutlet UIImageView *imageView;
+    IBOutlet UIProgressView *progressViewr;
     HTTPBinManager *manager;
 }
 
@@ -42,10 +43,10 @@
     }
     else {
         NSLog(@"繼續進行 目前進度%f",binManager.progress);
-//        if (binManager.progress > .4 && !binManager.isCancelled) {
-//            [binManager cancelOperation];
-//        }
     }
+    
+    imageView.image = binManager.image;
+    progressViewr.progress = binManager.progress;
 }
 
 @end

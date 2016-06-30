@@ -6,9 +6,9 @@
 //  Copyright © 2016年 w91379137. All rights reserved.
 //
 
+#import "PDSSetting.h"
 #import "HTTPBinManagerOperation.h"
 #import "WebService.h"
-#import "PDSSetting.h"
 
 @interface HTTPBinManagerOperation()
 

@@ -62,8 +62,10 @@
 {
     self.isCancelled = operation.isCancelled;
     self.progress = operation.progress;
+    
+    self.image = operation.image;
     self.error = operation.error;
-    //要不要把資料 存回來？
+    
     [self.delegate operationManagerNotice:self];
 }
 
