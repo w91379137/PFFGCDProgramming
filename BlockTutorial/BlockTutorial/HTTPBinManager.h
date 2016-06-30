@@ -18,7 +18,6 @@
 @interface HTTPBinManager : NSObject
 
 + (instancetype)sharedInstance;
-+ (void)resetSharedInstance;
 
 @property(nonatomic, weak) id<HTTPBinManagerDelegate>delegate;
 
