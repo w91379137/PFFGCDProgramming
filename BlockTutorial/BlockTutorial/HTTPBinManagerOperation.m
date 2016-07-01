@@ -29,15 +29,14 @@
 - (void)loopAllTask
 {
     if (self.isCancelled || self.error) return;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate operationNotice:self];
+    });
     
     weakSelfMake(weakSelf);
     if (!self.getDict) [self taskGet:^{ [weakSelf loopAllTask]; }];
     else if (!self.postDict) [self taskPost:^{ [weakSelf loopAllTask]; }];
     else if (!self.image) [self taskImage:^{ [weakSelf loopAllTask]; }];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.delegate operationNotice:self];
-    });
 }
 
 - (void)taskGet:(void(^)())callback
