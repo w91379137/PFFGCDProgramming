@@ -36,6 +36,7 @@
     if (self) {
         self.queue = [[NSOperationQueue alloc] init];
         self.queue.maxConcurrentOperationCount = 1;
+        self.queue.name = @"HTTPBinManager queue";
     }
     return self;
 }
@@ -66,7 +67,9 @@
     self.image = operation.image;
     self.error = operation.error;
     
-    [self.delegate operationManagerNotice:self];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate operationManagerNotice:self];
+    });
 }
 
 @end

@@ -38,13 +38,6 @@
 #pragma mark - HTTPBinManagerDelegate
 - (void)operationManagerNotice:(HTTPBinManager *)binManager
 {
-    if (binManager.isCancelled) {
-        NSLog(@"取消 取消前進度%f",binManager.progress);
-    }
-    else {
-        NSLog(@"繼續進行 目前進度%f",binManager.progress);
-    }
-    
     imageView.image = binManager.image;
     progressViewr.progress = binManager.progress;
 }
