@@ -6,88 +6,94 @@
 //  Copyright © 2016年 w91379137. All rights reserved.
 //
 
+#import "PDSSetting.h"
 #import "HTTPBinManagerOperation.h"
 #import "WebService.h"
 
 @interface HTTPBinManagerOperation()
 
-@property (nonatomic, strong) dispatch_semaphore_t semaphore;
-
 @end
 
 @implementation HTTPBinManagerOperation
 
+#pragma mark -
 - (void)main
 {
     @autoreleasepool {
-        
         self.error = nil;
-        self.semaphore = dispatch_semaphore_create(0);
-        {
-            [WebService fetchImageWithCallback:^(UIImage *image, NSError *err) {
-                
-                if (err) {
-                    self.error  = err;
-                    [self cancel];
-                }
-                else {
-                    self.image = image;
-                }
-                
-                dispatch_semaphore_signal(self.semaphore);
-            }];
-            dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-            
-            if (self.isCancelled) return;
-            [self.delegate operationNotice:self];
-        }
-        
-        {
-            [WebService fetchGetResponseWithCallback:^(NSDictionary *dict, NSError *err) {
-                
-                if (err) {
-                    self.error  = err;
-                    [self cancel];
-                }
-                else {
-                    self.getDict = dict;
-                }
-                
-                dispatch_semaphore_signal(self.semaphore);
-            }];
-            dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-            
-            if (self.isCancelled) return;
-            [self.delegate operationNotice:self];
-        }
-        
-        {
-            [WebService postCustomerName:@"kkbox"
-                                callback:^(NSDictionary *dict, NSError *err) {
-                                    
-                                    if (err) {
-                                        self.error  = err;
-                                        [self cancel];
-                                    }
-                                    else {
-                                        self.postDict = dict;
-                                    }
-                                    
-                                    dispatch_semaphore_signal(self.semaphore);
-                                }];
-            dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-            
-            if (self.isCancelled) return;
-            [self.delegate operationNotice:self];
-        }
+        [self loopAllTask];
     }
 }
 
+#pragma mark - Task
+- (void)loopAllTask
+{
+    if (self.isCancelled || self.error) return;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate operationNotice:self];
+    });
+    
+    weakSelfMake(weakSelf);
+    if (!self.getDict) [self taskGet:^{ [weakSelf loopAllTask]; }];
+    else if (!self.postDict) [self taskPost:^{ [weakSelf loopAllTask]; }];
+    else if (!self.image) [self taskImage:^{ [weakSelf loopAllTask]; }];
+}
+
+- (void)taskGet:(void(^)())callback
+{
+    [WebService fetchGetResponseWithCallback:^(NSDictionary *dict, NSError *err) {
+        if (err) {
+            self.error  = err;
+            [self cancel];
+        }
+        else {
+            self.getDict = dict;
+        }
+        
+        if(callback) callback();
+    }];
+}
+
+- (void)taskPost:(void(^)())callback
+{
+    [WebService postCustomerName:@"test"
+                        callback:^(NSDictionary *dict, NSError *err) {
+                            
+                            if (err) {
+                                self.error  = err;
+                                [self cancel];
+                            }
+                            else {
+                                self.postDict = dict;
+                            }
+                            
+                            if(callback) callback();
+                        }];
+}
+
+- (void)taskImage:(void(^)())callback
+{
+    [WebService fetchImageWithCallback:^(UIImage *image, NSError *err) {
+        
+        if (err) {
+            self.error  = err;
+            [self cancel];
+        }
+        else {
+            self.image = image;
+        }
+        
+        if(callback) callback();
+    }];
+}
+
+#pragma mark -
 - (void)cancel
 {
-    [super cancel];
-    dispatch_semaphore_signal(self.semaphore);
-    [self.delegate operationNotice:self];
+    [super cancel]; //cancel self no error
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate operationNotice:self];
+    });
 }
 
 - (float)progress

@@ -22,69 +22,69 @@ protocol HTTPBinManagerOperationType {
 class HTTPBinManagerOperation: Operation,HTTPBinManagerOperationType {
     
     //MARK: - Property
-    //Private
-    private let semaphore = DispatchSemaphore(value: 0);
-    
-    //Public
     var delegate : HTTPBinManagerOperationDelegate?
     
-    var error : NSError? = nil
-    var image : UIImage? = nil
-    var getDict : NSDictionary? = nil
-    var postDict : NSDictionary? = nil
+    var error : NSError?
+    var image : UIImage?
+    var getDict : NSDictionary?
+    var postDict : NSDictionary?
     
     //MARK:
     override func main() {
-        
-        fetchGetResponseWithCallback { (dict, error) in
-            if error != nil {
-                self.error = error
-                self.cancel()
-            }
-            else {
-                self.getDict = dict
-            }
-            self.semaphore.signal()
-        }
-        self.semaphore.wait()
-        
-        if self.isCancelled { return }
-        self.delegate?.operationNotice(operation: self)
-        
-        postCustomerName(name: "test") { (dict, error) in
-            if error != nil {
-                self.error = error
-                self.cancel()
-            }
-            else {
-                self.postDict = dict
-            }
-            self.semaphore.signal()
-        }
-        self.semaphore.wait()
-        
-        if self.isCancelled { return }
-        self.delegate?.operationNotice(operation: self)
-        
-        fetchImageWithCallback { (image, error) in
-            if error != nil {
-                self.error = error
-                self.cancel()
-            }
-            else {
-                self.image = image
-            }
-            self.semaphore.signal()
-        }
-        self.semaphore.wait()
-        
-        if self.isCancelled { return }
-        self.delegate?.operationNotice(operation: self)
+        self.loopAllTask()
     }
     
+    func loopAllTask() {
+        
+        if self.isCancelled || (self.error != nil) { return }
+        DispatchQueue.main.async() {
+            self.delegate?.operationNotice(operation: self);
+        }
+        
+        if self.getDict == nil {
+            fetchGetResponseWithCallback { (dict, error) in
+                if error != nil {
+                    self.error = error
+                    self.cancel()
+                }
+                else {
+                    self.getDict = dict
+                }
+                self.loopAllTask()
+            }
+        }
+        else if self.postDict == nil {
+            postCustomerName(name: "test") { (dict, error) in
+                if error != nil {
+                    self.error = error
+                    self.cancel()
+                }
+                else {
+                    self.postDict = dict
+                }
+                self.loopAllTask()
+            }
+        }
+        else if self.image == nil {
+            fetchImageWithCallback { (image, error) in
+                if error != nil {
+                    self.error = error
+                    self.cancel()
+                }
+                else {
+                    self.image = image
+                }
+                self.loopAllTask()
+            }
+        }
+        else {
+            //Finish
+        }
+    }
+    
+    //MARK:
     override func cancel() {
         super.cancel()
-        self.semaphore.signal();
         self.delegate?.operationNotice(operation: self)
     }
     

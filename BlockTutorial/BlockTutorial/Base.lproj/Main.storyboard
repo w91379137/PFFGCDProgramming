@@ -19,34 +19,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NGV-eP-Q28">
-                                <rect key="frame" x="16" y="20" width="288" height="548"/>
+                                <rect key="frame" x="60" y="20" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="cwz-rM-jqz"/>
+                                    <constraint firstAttribute="height" constant="200" id="p3K-ci-ePe"/>
+                                </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HKy-LK-MgW">
-                                <rect key="frame" x="142" y="275" width="37" height="37"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vu6-2l-OHb">
-                                <rect key="frame" x="143" y="524" width="34" height="30"/>
+                                <rect key="frame" x="130" y="254" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DdL-Mu-hiN"/>
+                                    <constraint firstAttribute="width" constant="60" id="JTx-bm-RFj"/>
+                                </constraints>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0EQ-W3-vaN"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o2L-aS-N6P">
+                                <rect key="frame" x="16" y="516" width="288" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HKy-LK-MgW" firstAttribute="centerX" secondItem="NGV-eP-Q28" secondAttribute="centerX" id="6h6-0o-3e9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NGV-eP-Q28" secondAttribute="trailing" id="EBe-xN-jU1"/>
-                            <constraint firstItem="NGV-eP-Q28" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="G2m-5O-Nzw"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vu6-2l-OHb" secondAttribute="bottom" constant="14" id="Ndj-3N-UDe"/>
-                            <constraint firstItem="HKy-LK-MgW" firstAttribute="centerY" secondItem="NGV-eP-Q28" secondAttribute="centerY" id="XpD-St-daa"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NGV-eP-Q28" secondAttribute="bottom" id="dqF-eR-OoM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="o2L-aS-N6P" secondAttribute="trailing" id="7WJ-3a-tSb"/>
+                            <constraint firstItem="NGV-eP-Q28" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9Bm-fE-ec8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="o2L-aS-N6P" secondAttribute="bottom" constant="50" id="IaT-6t-w78"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="o2L-aS-N6P" secondAttribute="leading" id="LAS-LW-GI9"/>
+                            <constraint firstItem="NGV-eP-Q28" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UZb-wu-Aci"/>
                             <constraint firstItem="Vu6-2l-OHb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ikV-Kg-WlY"/>
-                            <constraint firstItem="NGV-eP-Q28" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pDm-71-Qga"/>
+                            <constraint firstItem="Vu6-2l-OHb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oav-oH-D93"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="NGV-eP-Q28" id="9lv-EI-3fh"/>
+                        <outlet property="progressViewr" destination="o2L-aS-N6P" id="5Lt-zm-lao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

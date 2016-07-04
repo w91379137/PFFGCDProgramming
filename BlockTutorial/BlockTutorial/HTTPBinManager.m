@@ -36,6 +36,7 @@
     if (self) {
         self.queue = [[NSOperationQueue alloc] init];
         self.queue.maxConcurrentOperationCount = 1;
+        self.queue.name = @"HTTPBinManager queue";
     }
     return self;
 }
@@ -62,9 +63,13 @@
 {
     self.isCancelled = operation.isCancelled;
     self.progress = operation.progress;
+    
+    self.image = operation.image;
     self.error = operation.error;
-    //要不要把資料 存回來？
-    [self.delegate operationManagerNotice:self];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate operationManagerNotice:self];
+    });
 }
 
 @end
