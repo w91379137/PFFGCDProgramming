@@ -22,25 +22,23 @@
                                                         NSURLResponse *response,
                                                         NSError *error) {
                                         
-                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                            if (error) {
-                                                callback(nil, error);
-                                            }
-                                            else {
-                                                NSError *jsonError = nil;
-                                                id json =
-                                                [NSJSONSerialization JSONObjectWithData:data
-                                                                                options:NSJSONReadingMutableContainers
-                                                                                  error:&jsonError];
-                                                
-                                                if ([json isKindOfClass:[NSDictionary class]]) {
-                                                    callback(json, error);
-                                                }
-                                                else {
-                                                    callback(nil, error);
-                                                }
-                                            }
-                                        });
+                                        NSDictionary *dict = nil;
+                                        NSError *err = error;
+                                        
+                                        if (!error) {
+                                            NSError *jsonError = nil;
+                                            id json =
+                                            [NSJSONSerialization JSONObjectWithData:data
+                                                                            options:NSJSONReadingMutableContainers
+                                                                              error:&jsonError];
+                                            
+                                            if ([json isKindOfClass:[NSDictionary class]])
+                                                dict = json;
+                                            else
+                                                err = jsonError;
+                                        }
+                                        
+                                        callback(dict, err);
                                     }];
     [task resume];
 }
@@ -76,25 +74,23 @@
                                                         NSURLResponse *response,
                                                         NSError *error) {
                                         
-                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                            if (error) {
-                                                callback(nil, error);
-                                            }
-                                            else {
-                                                NSError *jsonError = nil;
-                                                id json =
-                                                [NSJSONSerialization JSONObjectWithData:data
-                                                                                options:NSJSONReadingMutableContainers
-                                                                                  error:&jsonError];
-                                                
-                                                if ([json isKindOfClass:[NSDictionary class]]) {
-                                                    callback(json, error);
-                                                }
-                                                else {
-                                                    callback(nil, error);
-                                                }
-                                            }
-                                        });
+                                        NSDictionary *dict = nil;
+                                        NSError *err = error;
+                                        
+                                        if (!error) {
+                                            NSError *jsonError = nil;
+                                            id json =
+                                            [NSJSONSerialization JSONObjectWithData:data
+                                                                            options:NSJSONReadingMutableContainers
+                                                                              error:&jsonError];
+                                            
+                                            if ([json isKindOfClass:[NSDictionary class]])
+                                                dict = json;
+                                            else
+                                                err = jsonError;
+                                        }
+                                        
+                                        callback(dict, err);
                                     }];
     
     [postDataTask resume];
@@ -112,22 +108,18 @@
                                                         NSURLResponse *response,
                                                         NSError *error) {
                                         
-                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                            if (error) {
-                                                callback(nil, error);
-                                            }
-                                            else {
-                                                UIImage *image = [UIImage imageWithData:data];
-                                                
-                                                if ([image isKindOfClass:[UIImage class]]) {
-                                                    callback(image, error);
-                                                }
-                                                else {
-                                                    callback(nil, error);
-                                                }
-                                            }
-                                        });
+                                        UIImage *image = nil;
+                                        NSError *err = error;
                                         
+                                        if (!error) {
+                                            UIImage *imageOfData = [UIImage imageWithData:data];
+                                            
+                                            if (imageOfData) {
+                                                image = imageOfData;
+                                            }
+                                        }
+                                        
+                                        callback(image, err);
                                     }];
     [task resume];
 }

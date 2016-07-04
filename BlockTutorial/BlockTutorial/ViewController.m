@@ -13,6 +13,7 @@
 <HTTPBinManagerDelegate>
 {
     IBOutlet UIImageView *imageView;
+    IBOutlet UIProgressView *progressViewr;
     HTTPBinManager *manager;
 }
 
@@ -37,15 +38,8 @@
 #pragma mark - HTTPBinManagerDelegate
 - (void)operationManagerNotice:(HTTPBinManager *)binManager
 {
-    if (binManager.isCancelled) {
-        NSLog(@"取消 取消前進度%f",binManager.progress);
-    }
-    else {
-        NSLog(@"繼續進行 目前進度%f",binManager.progress);
-//        if (binManager.progress > .4 && !binManager.isCancelled) {
-//            [binManager cancelOperation];
-//        }
-    }
+    imageView.image = binManager.image;
+    progressViewr.progress = binManager.progress;
 }
 
 @end

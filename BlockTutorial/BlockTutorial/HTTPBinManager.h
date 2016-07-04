@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class HTTPBinManager;
 @protocol HTTPBinManagerDelegate <NSObject>
@@ -18,13 +19,14 @@
 @interface HTTPBinManager : NSObject
 
 + (instancetype)sharedInstance;
-+ (void)resetSharedInstance;
 
 @property(nonatomic, weak) id<HTTPBinManagerDelegate>delegate;
 
 //Status
 @property(nonatomic) float progress;
 @property(nonatomic) BOOL isCancelled;
+
+@property(nonatomic, strong) UIImage *image;
 @property(nonatomic, strong) NSError *error;
 
 //Action

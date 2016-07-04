@@ -25,8 +25,8 @@
 @property (nonatomic, strong) NSError *error;
 
 //Data
-@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSDictionary *getDict;
 @property (nonatomic, strong) NSDictionary *postDict;
+@property (nonatomic, strong) UIImage *image;
 
 @end

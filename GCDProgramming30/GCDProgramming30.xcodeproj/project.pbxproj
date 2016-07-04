@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F81B6A4E1D23A2F9009709F8 /* SingletonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B6A4D1D23A2F9009709F8 /* SingletonTest.swift */; };
+		F81A6E7D1D261B4500E7EAF6 /* HTTPBinManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A6E7C1D261B4500E7EAF6 /* HTTPBinManagerTests.swift */; };
+		F81A6E7F1D2634CD00E7EAF6 /* HTTPBinWorkTogetherOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A6E7E1D2634CD00E7EAF6 /* HTTPBinWorkTogetherOperationTests.swift */; };
 		F81B6A4F1D23A555009709F8 /* HTTPBinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89BB0F31D22473F0028E97C /* HTTPBinManager.swift */; };
 		F81B6A501D23A557009709F8 /* HTTPBinManagerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89BB0F41D22473F0028E97C /* HTTPBinManagerOperation.swift */; };
 		F81B6A511D23A558009709F8 /* HTTPBinWorkTogetherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BDE7DE1D22822900FA3DBC /* HTTPBinWorkTogetherOperation.swift */; };
-		F824A5C31D239B0000ED0016 /* GCDProgramming30Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824A5C21D239B0000ED0016 /* GCDProgramming30Tests.swift */; };
 		F824A5CB1D239B1300ED0016 /* APITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F824A5CA1D239B1300ED0016 /* APITest.swift */; };
 		F824A5CC1D239BDF00ED0016 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88E7F491D227665000112C1 /* API.swift */; };
 		F88E7F4A1D227665000112C1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88E7F491D227665000112C1 /* API.swift */; };
@@ -36,9 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F81B6A4D1D23A2F9009709F8 /* SingletonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonTest.swift; sourceTree = "<group>"; };
+		F81A6E7C1D261B4500E7EAF6 /* HTTPBinManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinManagerTests.swift; sourceTree = "<group>"; };
+		F81A6E7E1D2634CD00E7EAF6 /* HTTPBinWorkTogetherOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinWorkTogetherOperationTests.swift; sourceTree = "<group>"; };
 		F824A5C01D239B0000ED0016 /* GCDProgramming30Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCDProgramming30Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F824A5C21D239B0000ED0016 /* GCDProgramming30Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDProgramming30Tests.swift; sourceTree = "<group>"; };
 		F824A5C41D239B0000ED0016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F824A5CA1D239B1300ED0016 /* APITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITest.swift; sourceTree = "<group>"; };
 		F88E7F491D227665000112C1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -75,9 +75,9 @@
 		F824A5C11D239B0000ED0016 /* GCDProgramming30Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F824A5C21D239B0000ED0016 /* GCDProgramming30Tests.swift */,
 				F824A5CA1D239B1300ED0016 /* APITest.swift */,
-				F81B6A4D1D23A2F9009709F8 /* SingletonTest.swift */,
+				F81A6E7C1D261B4500E7EAF6 /* HTTPBinManagerTests.swift */,
+				F81A6E7E1D2634CD00E7EAF6 /* HTTPBinWorkTogetherOperationTests.swift */,
 				F824A5C41D239B0000ED0016 /* Info.plist */,
 			);
 			path = GCDProgramming30Tests;
@@ -242,11 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81A6E7D1D261B4500E7EAF6 /* HTTPBinManagerTests.swift in Sources */,
 				F824A5CB1D239B1300ED0016 /* APITest.swift in Sources */,
-				F81B6A4E1D23A2F9009709F8 /* SingletonTest.swift in Sources */,
 				F81B6A4F1D23A555009709F8 /* HTTPBinManager.swift in Sources */,
 				F824A5CC1D239BDF00ED0016 /* API.swift in Sources */,
-				F824A5C31D239B0000ED0016 /* GCDProgramming30Tests.swift in Sources */,
+				F81A6E7F1D2634CD00E7EAF6 /* HTTPBinWorkTogetherOperationTests.swift in Sources */,
 				F81B6A501D23A557009709F8 /* HTTPBinManagerOperation.swift in Sources */,
 				F81B6A511D23A558009709F8 /* HTTPBinWorkTogetherOperation.swift in Sources */,
 			);

@@ -1,6 +1,6 @@
 //
 //  BlockTutorialTests.m
-//  BlockTutorialTests
+//  WebServiceTests
 //
 //  Created by w91379137 on 2016/6/27.
 //  Copyright © 2016年 w91379137. All rights reserved.
@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "WebService.h"
 
-@interface BlockTutorialTests : XCTestCase
+@interface WebServiceTests : XCTestCase
 
 @end
 
-@implementation BlockTutorialTests
+@implementation WebServiceTests
 
 - (void)setUp {
     [super setUp];
@@ -23,13 +23,6 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testExample
-{
-    [self testGet];
-    [self testPost];
-    [self testImage];
 }
 
 //之前的測試方法

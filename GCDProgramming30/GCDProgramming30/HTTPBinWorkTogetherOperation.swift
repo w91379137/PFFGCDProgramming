@@ -14,10 +14,10 @@ class HTTPBinWorkTogetherOperation: Operation, HTTPBinManagerOperationType {
     //Public
     var delegate : HTTPBinManagerOperationDelegate?
     
-    var error : NSError? = nil
-    var image : UIImage? = nil
-    var getDict : NSDictionary? = nil
-    var postDict : NSDictionary? = nil
+    var error : NSError?
+    var image : UIImage?
+    var getDict : NSDictionary?
+    var postDict : NSDictionary?
     
     //MARK:
     override func main() {

@@ -9,9 +9,6 @@
 #import "HTTPBinManager.h"
 #import "HTTPBinManagerOperation.h"
 
-static id _instance;
-static dispatch_once_t onceToken;
-
 @interface HTTPBinManager()
 <HTTPBinManagerOperationDelegate>
 
@@ -24,18 +21,13 @@ static dispatch_once_t onceToken;
 #pragma mark - Init
 + (instancetype)sharedInstance
 {
+    static id _instance;
+    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[self alloc] init];
     });
     
     return _instance;
-}
-
-+ (void)resetSharedInstance
-{
-    //for debug & test
-    _instance = nil;
-    onceToken = 0;
 }
 
 - (instancetype)init
@@ -44,6 +36,7 @@ static dispatch_once_t onceToken;
     if (self) {
         self.queue = [[NSOperationQueue alloc] init];
         self.queue.maxConcurrentOperationCount = 1;
+        self.queue.name = @"HTTPBinManager queue";
     }
     return self;
 }
@@ -70,9 +63,13 @@ static dispatch_once_t onceToken;
 {
     self.isCancelled = operation.isCancelled;
     self.progress = operation.progress;
+    
+    self.image = operation.image;
     self.error = operation.error;
-    //要不要把資料 存回來？
-    [self.delegate operationManagerNotice:self];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate operationManagerNotice:self];
+    });
 }
 
 @end
